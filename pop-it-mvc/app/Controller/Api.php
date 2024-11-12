@@ -45,4 +45,17 @@ class Api
         (new View())->toJSON(['token'=>$token]);
     }
    }
+
+   public function login(Request $request): void
+   {
+
+        if (Auth::attempt($request->all())) {
+            $user = Auth::user();
+            $token = $user->createToken();
+            (new View())->toJSON(['token'=>$token]);
+        }
+        (new View())->toJSON(['message' => 'Неправильные логин или пароль'],401);
+       
+    
+   }
 }
