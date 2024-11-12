@@ -5,7 +5,6 @@
    <label>ФИО <input type="text" name="fio"></label>
    <label>Email <input type="text" name="email"></label>
    <label>Пароль <input type="password" name="password"></label>
-   <input name="token" type="hidden" value="q"/>
    <button>Зарегистрироваться</button>
 </form>
 
