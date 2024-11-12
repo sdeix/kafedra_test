@@ -2,7 +2,7 @@
 
 namespace Controller;
 
-use Exception;
+use Model\Product;
 use Model\Post;
 use Src\View;
 use Src\Request;
@@ -55,7 +55,11 @@ class Api
             (new View())->toJSON(['token'=>$token]);
         }
         (new View())->toJSON(['message' => 'Неправильные логин или пароль'],401);
-       
-    
+   }
+
+   public function products(Request $request): void
+   {
+        $products = Product::all();
+        (new View())->toJSON([$products]);
    }
 }
