@@ -6,15 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Src\Auth\IdentityInterface;
 
+
 class User extends Model implements IdentityInterface
 {
    use HasFactory;
 
    public $timestamps = false;
    protected $fillable = [
-       'name',
-       'login',
-       'password'
+       'fio',
+       'email',
+       'password',
+       'token'
    ];
 
    protected static function booted()
@@ -42,5 +44,13 @@ class User extends Model implements IdentityInterface
    {
        return self::where(['login' => $credentials['login'],
            'password' => md5($credentials['password'])])->first();
+   }
+   public function createToken()
+   {
+       $token = md5(time()); 
+       $this->token = $token;
+       $this->save();
+
+       return $token;
    }
 }
