@@ -40,12 +40,12 @@ class User extends Model implements IdentityInterface
    }
 
    //Возврат аутентифицированного пользователя
-   public function attemptIdentity(array $credentials)
+   public function attemptIdentity(array $credentials): User|null
    {
        return self::where(['email' => $credentials['email'],
            'password' => md5($credentials['password'])])->first();
    }
-   public function createToken()
+   public function createToken():string        
    {
        $token = md5(time()); 
        $this->token = $token;
