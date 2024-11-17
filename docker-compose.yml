@@ -22,7 +22,7 @@ services:
     restart: unless-stopped
     container_name: ${PROJECT_NAME:-project}-php
     volumes:
-      - ./:/var/www/html
+      - ./pop-it-mvc:/var/www/html
     ports:
       - ${WEB_PORT:-10000}:80
     depends_on:
