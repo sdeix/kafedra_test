@@ -12,14 +12,10 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "127.0.0.1:3000/products",
+					"raw": "{{host}}/products",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{host}}"
 					],
-					"port": "3000",
 					"path": [
 						"products"
 					]
@@ -53,18 +49,11 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:10000/pop-it-mvc/api/signup",
-					"protocol": "http",
+					"raw": "{{host}}/signup",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{host}}"
 					],
-					"port": "10000",
 					"path": [
-						"pop-it-mvc",
-						"api",
 						"signup"
 					]
 				}
@@ -92,18 +81,11 @@
 					]
 				},
 				"url": {
-					"raw": "http://127.0.0.1:10000/pop-it-mvc/api/login",
-					"protocol": "http",
+					"raw": "{{host}}/login",
 					"host": [
-						"127",
-						"0",
-						"0",
-						"1"
+						"{{host}}"
 					],
-					"port": "10000",
 					"path": [
-						"pop-it-mvc",
-						"api",
 						"login"
 					]
 				}
