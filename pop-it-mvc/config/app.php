@@ -17,7 +17,8 @@ return [
 
     'validators' => [
         'required' => \Validators\RequireValidator::class,
-        'unique' => \Validators\UniqueValidator::class
+        'unique' => \Validators\UniqueValidator::class,
+        'min' => \Validators\MinValidator::class
     ],
     'providers' => [
         'kernel' => \Providers\KernelProvider::class,

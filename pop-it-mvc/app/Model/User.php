@@ -6,15 +6,17 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Src\Auth\IdentityInterface;
 
+
 class User extends Model implements IdentityInterface
 {
    use HasFactory;
 
    public $timestamps = false;
    protected $fillable = [
-       'name',
-       'login',
-       'password'
+       'fio',
+       'email',
+       'password',
+       'token'
    ];
 
    protected static function booted()
@@ -38,9 +40,17 @@ class User extends Model implements IdentityInterface
    }
 
    //Возврат аутентифицированного пользователя
-   public function attemptIdentity(array $credentials)
+   public function attemptIdentity(array $credentials): User|null
    {
-       return self::where(['login' => $credentials['login'],
+       return self::where(['email' => $credentials['email'],
            'password' => md5($credentials['password'])])->first();
+   }
+   public function createToken():string        
+   {
+       $token = md5(time()); 
+       $this->token = $token;
+       $this->save();
+
+       return $token;
    }
 }
